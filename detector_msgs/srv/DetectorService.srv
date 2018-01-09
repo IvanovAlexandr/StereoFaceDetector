@@ -1,0 +1,7 @@
+#request fields
+sensor_msgs/Image left_image
+sensor_msgs/Image right_image
+---
+#response fields
+detector_msgs/CvRect face_rect
+detector_msgs/CvRect rect

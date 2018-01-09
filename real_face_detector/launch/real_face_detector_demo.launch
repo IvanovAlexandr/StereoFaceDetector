@@ -1,0 +1,20 @@
+<launch>
+
+  <include file="$(find video_streamer)/launch/stereo_camera.launch"/>
+
+
+
+  <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="__ns:=stereo _approximate_sync:=true">
+  </node>
+
+  <node name="face_detector" pkg="face_detection" type="face_detector">
+  </node>
+
+  <node name="stereo_view" pkg="image_view" type="stereo_view" args="stereo:=/stereo image:=image_rect_color _approximate_sync:=true _debug:=true">
+  </node>
+
+  <node name="dynparam" pkg="dynamic_reconfigure" type="dynparam" args="load /stereo/stereo_image_proc $(find stereo_image_proc)/cfg/config_for_wall.yaml">
+  </node>
+
+
+</launch>
