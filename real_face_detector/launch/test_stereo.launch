@@ -1,0 +1,15 @@
+<launch>
+
+  <include file="$(find video_streamer)/launch/stereo_camera.launch"/>
+
+
+
+  <node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc" args="__ns:=stereo _approximate_sync:=true">
+  </node>
+
+  <node name="test_view" pkg="image_view" type="test_view" args="stereo:=/stereo image:=image_rect_color _approximate_sync:=true">
+  </node>
+
+
+
+</launch>
